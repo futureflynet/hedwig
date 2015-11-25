@@ -208,6 +208,14 @@ defmodule Hedwig.Stanza do
       ])
   end
 
+  def join(:history, room, username) do
+    xmlel(name: "presence",
+      attrs: [
+        {"to", "#{room}/#{username}"}
+      ]
+    )
+  end
+
   def chat(to, body), do: message(to, "chat", body)
   def normal(to, body), do: message(to, "normal", body)
   def groupchat(to, body), do: message(to, "groupchat", body)
